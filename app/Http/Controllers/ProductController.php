@@ -11,6 +11,7 @@ use League\Fractal\Resource\Collection as Collection;
 use League\Fractal\Resource\Item as Item;
 use App\Transformers\ProductTransformer;
 use App\Services\UploadService;
+use Ramsey\Uuid\Uuid;
 
 class ProductController extends Controller
 {
@@ -287,6 +288,7 @@ class ProductController extends Controller
 
             $input                  = $request->all();
             $input['view']          =   0;
+            $input['id']            = Uuid::uuid4();
             $input['stock']         = $request->stock;
             $input['slug']          = $request->name;
             $input['user_id']       = $user->id;
@@ -294,10 +296,11 @@ class ProductController extends Controller
             $input['image_2']       = $image2;
             $input['image_3']       = $image3;
             $input['image_4']       = $image4;
+            //return $input;
             $Product                = Product::create($input);
-            $response['data']       = $input;
-            $response['data']['id'] = $Product->id;
-            $response['status']     = "success";
+            //$response['data']       = $input;
+            //$response['data']['id'] = $Product->id;
+            $response['status']     = true;
             $response['message']    = 'Berhasil Menambahkan Produk';
         }else
         {
