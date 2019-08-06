@@ -11,7 +11,7 @@ class Product extends Model
     use SoftDeletes;
 
     
-    protected $fillable=['name','price','category_id','description','slug','user_id','unit_id','publish','weight','view','stock','village_id','image_1','image_2','image_3','image_4'];
+    protected $fillable=['id','name','price','category_id','description','slug','user_id','unit_id','publish','weight','view','stock','village_id','image_1','image_2','image_3','image_4'];
 
     public function setSlugAttribute($value)
     {
@@ -46,4 +46,5 @@ class Product extends Model
     }
 
     protected $dates = ['deleted_at'];
+    public $incrementing = false;
 }
